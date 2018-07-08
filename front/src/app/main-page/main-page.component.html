@@ -1,0 +1,66 @@
+<article class="duel">
+  <div class="duel-wrapper">
+    <h1 class="main-header center-text">
+      Предсказание итогов футбольного матча
+    </h1>
+
+    <form [formGroup]="form" class="duel-inner" (submit)="onSubmit()">
+      <div class="duel-score">
+        <h3 class="duel-header">Введите счет после первого тайма</h3>
+        <div class="duel-spoiler">
+          <p class="duel-count-score">
+            <mat-form-field>
+              <input matInput type="number" min="0" formControlName="leftCountryScore">
+            </mat-form-field>
+            :
+            <mat-form-field>
+                <input matInput type="number" min="0" formControlName="rightCountryScore">
+            </mat-form-field>
+          </p>
+        </div>
+
+        <div>
+          <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid || (leftTeam.value.length < 15 || rightTeam.value.length < 15)">Предсказать!</button>
+        </div>
+
+        <div class="prediction">
+          <span *ngIf="predict == 1">Выиграет команда {{leftCountry.value}}</span>
+          <span *ngIf="predict == 0">Будет ничья!</span>
+          <span *ngIf="predict == -1">Выиграет команда {{rightCountry.value}}</span>
+        </div>
+
+      </div>
+
+      <div class="duel-team duel-team-left">
+        <mat-select placeholder="Выберите первую команду" formControlName='leftCountry'>
+          <mat-option *ngFor="let country of countries" [value]="country" [disabled]="rightCountry.value === country">
+              {{country}}
+          </mat-option>
+        </mat-select>
+        <div class="duel-players">
+          <mat-select *ngIf="leftCountry.value" placeholder="Выберите игроков" formControlName='leftTeam' multiple>
+            <mat-option *ngFor="let player of leftTeamArray" [value]="player"
+            [disabled]="leftTeam.value.length == 15 && notInTeam('leftTeam', player)">
+              {{player}}
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+      <div class="duel-team duel-team-right">
+        <mat-select placeholder="Выберите вторую команду" formControlName='rightCountry'>
+          <mat-option *ngFor="let country of countries" [value]="country" [disabled]="leftCountry.value === country">
+              {{country}}
+          </mat-option>
+        </mat-select>
+        <div class="duel-players">
+          <mat-select *ngIf="rightCountry.value" placeholder="Выберите игроков" formControlName='rightTeam' multiple>
+            <mat-option *ngFor="let player of rightTeamArray" [value]="player"
+            [disabled]="rightTeam.value.length == 15 && notInTeam('rightTeam', player)">
+                {{player}}
+            </mat-option>
+          </mat-select>
+          </div>
+      </div>
+    </form>
+  </div>
+</article>

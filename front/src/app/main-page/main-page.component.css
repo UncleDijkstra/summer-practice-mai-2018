@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+.duel-wrapper {
+  padding: 30px 10px;
+}
+
+.duel .main-header {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 28px;
+  line-height: 42px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.duel-inner {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.duel-score {
+  padding: 0 0 15px;
+  margin: 0 50px;
+  order: 2;
+  text-align: center;
+}
+
+.duel-header {
+  display: block;
+  min-width: 260px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.duel-spoiler {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+mat-form-field {
+  text-align: center;
+  font-weight: 700;
+  width: 50px;
+}
+
+mat-select {
+  text-align: center;
+}
+
+.duel-team {
+  width: 260px;
+  margin-top: 20px;
+}
+
+.duel-team-left {
+  order: 1;
+}
+
+.duel-team-right {
+  order: 3;
+}
+
+.duel-players {
+  margin-top: 30px;
+}
+
+.prediction {
+  margin-top: 20px;
+  font-size: 20px;
+}
