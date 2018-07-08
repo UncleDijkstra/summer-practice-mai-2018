@@ -29,7 +29,7 @@ export class MainPageComponent implements OnInit {
   constructor(private fb: FormBuilder, private http: HttpClient) {}
 
   ngOnInit() {
-    this.countries = Object.keys(TEAMS);
+    this.countries = Object.keys(TEAMS).sort();
 
     this.form = this.fb.group({
       leftCountry: ['', [Validators.required]],
@@ -41,11 +41,11 @@ export class MainPageComponent implements OnInit {
     });
 
     this.form.get('leftCountry').valueChanges.subscribe(team => {
-      this.leftTeamArray = TEAMS[team];
+      this.leftTeamArray = TEAMS[team].sort();
     });
 
     this.form.get('rightCountry').valueChanges.subscribe(team => {
-      this.rightTeamArray = TEAMS[team];
+      this.rightTeamArray = TEAMS[team].sort();
     });
   }
 
